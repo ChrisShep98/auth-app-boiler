@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.18",
+    "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^2.4.3",
     "mongoose": "^8.0.1",
     "next": "14.0.3",
