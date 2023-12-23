@@ -8,7 +8,7 @@ const UserInfo = () => {
     <Stack>
         <Typography>Name: HARD_CODED_NAME</Typography>
         <Typography>Email: HARD_CODED_EMAIL</Typography>
-        <Button onClick={() => signOut()}>Logout</Button>
+        <Button type='submit' onClick={() => signOut()}>Logout</Button>
     </Stack>
   )
 }

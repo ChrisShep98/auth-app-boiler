@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Button, Stack, TextField, Typography } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
