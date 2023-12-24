@@ -31,13 +31,14 @@ console.log(error)
   }
 
   return (
+
     <Stack height={'100vh'} justifyContent={'center'}>
       <Stack justifyContent={'center'} alignItems={'center'} spacing={1}>
       <Typography>Enter your login details</Typography>
       <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column'}}>
-      <TextField onChange={e => setUserName(e.target.value)} type='text' placeholder='Username'></TextField>
-      <TextField onChange={e => setPassword(e.target.value)} type='password' placeholder='Password'></TextField>
-      <Button type='submit'>Login</Button>
+        <input onChange={e => setUserName(e.target.value)} type='text' placeholder='Username'></input>
+        <input onChange={e => setPassword(e.target.value)} type='password' placeholder='Password'></input>
+        <button type='submit'>Login</button>
       </form>
       {error &&
       <Typography color={'red'}>{error}</Typography>

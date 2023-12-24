@@ -47,10 +47,10 @@ const RegisterForm = () => {
       <Stack justifyContent={'center'} alignItems={'center'} spacing={1}>
       <Typography>Register an account here!</Typography>
       <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column'}}>
-      <TextField onChange={(e) => setUserName(e.target.value)} type='text' placeholder='User Name'></TextField>
-      <TextField onChange={(e) => setEmail(e.target.value)} type='email' placeholder='Email'></TextField>
-      <TextField onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Password'></TextField>
-      <Button type='submit'>Login</Button>
+        <input onChange={(e) => setUserName(e.target.value)} type='text' placeholder='User Name'></input>
+        <input onChange={(e) => setEmail(e.target.value)} type='email' placeholder='Email'></input>
+        <input onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Password'></input>
+        <button typeof='submit'>Login</button>
       </form>
       {
         error && (
