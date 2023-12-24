@@ -1,12 +1,12 @@
-import React from 'react'
-import UserInfo from '../components/UserInfo'
+import React from "react";
+import UserInfo from "../components/UserInfo";
 
 const Dashboard = () => {
   return (
     <>
-      <UserInfo/>
+      <UserInfo />
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
