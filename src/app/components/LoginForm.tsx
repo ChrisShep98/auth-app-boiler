@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -17,7 +17,7 @@ const LoginForm = () => {
     event.preventDefault();
     try {
       const res = await signIn("credentials", {
-        userName,
+        username,
         password,
         redirect: false,
       });
@@ -36,7 +36,7 @@ const LoginForm = () => {
       <Stack justifyContent={"center"} alignItems={"center"} spacing={1}>
         <Typography>Enter your login details</Typography>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-          <input onChange={(e) => setUserName(e.target.value)} type="text" placeholder="Username"></input>
+          <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username"></input>
           <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"></input>
           <button type="submit">Login</button>
         </form>

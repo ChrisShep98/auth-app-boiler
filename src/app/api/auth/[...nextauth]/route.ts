@@ -1,7 +1,7 @@
 import { connectMongoDB } from "@/app/lib/mongodb";
 import User from "@/app/models/Users";
 import { AuthOptions } from "next-auth";
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
@@ -15,13 +15,13 @@ const authOptions: AuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        userName: { label: "Username", type: "text" },
+        username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any) {
         try {
           await connectMongoDB();
-          const user = await User.findOne({ userName: credentials.userName });
+          const user = await User.findOne({ username: credentials.username });
 
           if (!user) {
             return null;

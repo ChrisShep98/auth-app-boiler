@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export async function POST(req: any) {
   try {
-    const { userName, email, password } = await req.json();
+    const { username, email, password } = await req.json();
     // try out below code when getting req param to NextApiRequest type
     // const { userName, email, password } = await req.body.json()
 
@@ -19,7 +19,7 @@ export async function POST(req: any) {
       return new NextResponse("Email is already in use", { status: 400 });
     }
 
-    await User.create({ userName, email, password: hashedPassword });
+    await User.create({ username, email, password: hashedPassword });
 
     return NextResponse.json({ message: "User registered" }, { status: 201 });
   } catch (error) {

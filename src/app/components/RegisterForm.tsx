@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const RegisterForm = () => {
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -13,7 +13,7 @@ const RegisterForm = () => {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    if (!userName || !email || !password) {
+    if (!username || !email || !password) {
       setError("Please fill out all fields");
       return;
     }
@@ -24,7 +24,7 @@ const RegisterForm = () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          userName,
+          username,
           email,
           password,
         }),
@@ -48,7 +48,7 @@ const RegisterForm = () => {
       <Stack justifyContent={"center"} alignItems={"center"} spacing={1}>
         <Typography>Register an account here!</Typography>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-          <input onChange={(e) => setUserName(e.target.value)} type="text" placeholder="User Name"></input>
+          <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="User Name"></input>
           <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email"></input>
           <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"></input>
           <button typeof="submit">Login</button>
