@@ -1,11 +1,10 @@
 import { connectMongoDB } from "@/app/lib/mongodb";
 import User from "@/app/models/Users";
-import { AuthOptions } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
-const authOptions: AuthOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -19,19 +18,22 @@ const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any) {
+        console.log(credentials);
+
         try {
           await connectMongoDB();
           const user = await User.findOne({ username: credentials.username });
+          const passwordsMatch = await bcrypt.compare(credentials.password, user.password);
+          console.log(user);
+          console.log(passwordsMatch);
 
           if (!user) {
             return null;
-          }
-          const passwordsMatch = await bcrypt.compare(credentials.password, user.password);
-
-          if (!passwordsMatch) {
+          } else if (!passwordsMatch) {
             return null;
+          } else {
+            return user;
           }
-          return user;
         } catch (error) {
           console.log("Error: ", error);
         }
@@ -46,8 +48,6 @@ const authOptions: AuthOptions = {
     // the route used to login
     signIn: "/",
   },
-};
-
-const handler = NextAuth(authOptions);
+});
 
 export { handler as GET, handler as POST };
