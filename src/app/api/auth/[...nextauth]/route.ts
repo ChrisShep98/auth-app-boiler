@@ -24,8 +24,6 @@ const handler = NextAuth({
           await connectMongoDB();
           const user = await User.findOne({ username: credentials.username });
           const passwordsMatch = await bcrypt.compare(credentials.password, user.password);
-          console.log(user);
-          console.log(passwordsMatch);
 
           if (!user) {
             return null;
